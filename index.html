@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, viewport-fit=cover">
+<meta property="og:title" content="Mio Shop - Marketplace Digital" />
+<meta property="og:description" content="Platform terpercaya untuk jual beli produk digital, VPS, skin game, panel bot, dan masih banyak lagi." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://mio-media.my.id/" />
+<meta property="og:image" content="https://c.termai.cc/i169/DDLaJ.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Platform terpercaya untuk jual beli produk digital, VPS, skin game, panel bot, dan masih banyak lagi." />
+<meta property="og:site_name" content="Mio Shop - Marketplace Digital" />
+<meta property="og:locale" content="id_ID" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Platform terpercaya untuk jual beli produk digital, VPS, skin game, panel bot, dan masih banyak lagi." />
+<meta name="twitter:description" content="Platform terpercaya untuk jual beli produk digital, VPS, skin game, panel bot, dan masih banyak lagi." />
+<meta name="twitter:image" content="https://c.termai.cc/i169/DDLaJ.jpg" />
+<link rel="icon" type="image/x-icon" href="https://c.termai.cc/i169/DDLaJ.jpg">
+<link rel="shortcut icon" type="image/x-icon" href="https://c.termai.cc/i169/DDLaJ.jpg">
+<link rel="apple-touch-icon" href="https://c.termai.cc/i169/DDLaJ.jpg">
+<title>Mio Shop - Marketplace Digital</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0f;
+  --surface:#13131c;
+  --surface2:#1c1c28;
+  --border:#ffffff12;
+  --accent:#c77dff;
+  --accent2:#7b2fff;
+  --accent3:#ff6b9d;
+  --text:#f0eeff;
+  --muted:#8a88a0;
+  --radius:16px;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);padding-bottom:70px}
+h1,h2,h3,h4{font-family:'Syne',sans-serif}
+
+#navbar{position:fixed;top:0;left:0;right:0;z-index:100;background:#0a0a0fcc;backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;padding:0 16px;height:60px}
+.nav-logo{font-size:22px;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;cursor:pointer}
+.nav-spacer{flex:1}
+.nav-btn{background:none;border:1px solid var(--border);color:var(--text);padding:6px 14px;border-radius:50px;cursor:pointer;font-size:13px;transition:.2s}
+.nav-btn:hover{border-color:var(--accent);color:var(--accent)}
+.nav-btn.primary{background:linear-gradient(135deg,var(--accent2),var(--accent3));border:none;color:#fff}
+#nav-avatar{width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);cursor:pointer}
+.nav-search{flex:1;max-width:300px;position:relative}
+.nav-search input{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:50px;padding:8px 16px 8px 38px;color:var(--text);outline:none}
+.nav-search .ico{position:absolute;left:12px;top:50%;transform:translateY(-50%);opacity:.4}
+
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);display:none;justify-content:space-around;padding:6px 12px 10px;z-index:100;height:70px}
+.bottom-nav-item{display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:none;color:var(--muted);font-size:12px;cursor:pointer;flex:1;padding:6px 0;border-radius:12px;transition:.2s}
+.bottom-nav-item .icon{font-size:24px}
+.bottom-nav-item.active{color:var(--accent);background:var(--surface2)}
+@media (max-width:768px){
+  .bottom-nav{display:flex}
+  .nav-search,#nav-guest,#nav-user{display:none!important}
+  body{padding-bottom:70px}
+}
+
+#app{padding-top:60px}
+.page{display:none}
+.page.active{display:block}
+
+.hero{padding:60px 24px 80px;text-align:center;position:relative;overflow:hidden;background:radial-gradient(ellipse 80% 50% at 50% 0%, rgba(123,47,255,0.15), transparent)}
+.hero-badge{display:inline-block;background:rgba(123,47,255,0.2);backdrop-filter:blur(4px);padding:6px 16px;border-radius:40px;font-size:13px;font-weight:500;color:var(--accent);margin-bottom:24px;border:1px solid rgba(199,125,255,0.3)}
+.hero h1{font-size:clamp(38px,8vw,80px);font-weight:800;line-height:1.1;margin-bottom:20px;background:linear-gradient(135deg,#fff,var(--accent),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--muted);max-width:560px;margin:0 auto 32px;font-size:16px;line-height:1.6}
+.hero-stats{display:flex;justify-content:center;gap:40px;margin-top:40px;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat .number{font-size:28px;font-weight:800;color:var(--accent);display:block}
+.hero-stat .label{font-size:12px;color:var(--muted)}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn{padding:12px 28px;border-radius:50px;cursor:pointer;font-size:14px;font-weight:600;border:none;transition:.2s}
+.btn-primary{background:linear-gradient(135deg,var(--accent2),var(--accent3));color:#fff;box-shadow:0 4px 15px rgba(123,47,255,0.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(123,47,255,0.4)}
+.btn-ghost{background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text)}
+.btn-ghost:hover{background:rgba(255,255,255,0.1);border-color:var(--accent)}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+.section-title{font-size:24px;font-weight:700;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-bottom:40px}
+@media (max-width:640px){.product-grid{grid-template-columns:1fr}}
+.product-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:.25s;position:relative}
+.product-card:hover{transform:translateY(-4px);border-color:var(--accent2)}
+.product-card-img{width:100%;aspect-ratio:1/1;object-fit:cover;background:var(--surface2)}
+.product-card-img.placeholder{display:flex;align-items:center;justify-content:center;font-size:36px}
+.product-card-body{padding:16px}
+.product-card-title{font-weight:700;font-size:16px;line-height:1.3;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.product-card-price{font-weight:800;color:var(--accent);font-size:16px;margin-top:8px}
+.seller-info{display:flex;align-items:center;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);cursor:pointer}
+.seller-info:hover .seller-name{color:var(--accent)}
+.seller-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:14px}
+.seller-name{font-size:13px;color:var(--muted);flex:1;transition:.2s}
+.seller-name strong{color:var(--text);font-weight:600}
+.badge{display:inline-block;padding:3px 8px;border-radius:50px;font-size:10px;background:var(--surface2);color:var(--muted)}
+.badge.cat{background:#7b2fff22;color:var(--accent)}
+
+.filter-bar{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap;align-items:center}
+.filter-bar select{background:var(--surface2);border:1px solid var(--border);border-radius:40px;padding:10px 16px;color:var(--text);font-size:13px;flex:1;min-width:130px}
+
+.modal-overlay{display:none;position:fixed;inset:0;background:#000a;z-index:200;align-items:center;justify-content:center;padding:16px}
+.modal-overlay.open{display:flex}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:28px;width:100%;max-width:540px;max-height:90vh;overflow:hidden;display:flex;flex-direction:column;position:relative}
+.modal-content{overflow-y:auto;padding:24px}
+.modal-close{position:absolute;top:16px;right:16px;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);border:none;color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;z-index:10}
+.modal-title{font-size:22px;font-weight:700;margin-bottom:20px;padding-right:32px}
+
+.form-group{margin-bottom:20px}
+label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px;font-weight:500}
+input,textarea,select{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:12px 14px;color:var(--text);font-size:14px;outline:none}
+textarea{resize:vertical;min-height:100px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:640px){.form-row{grid-template-columns:1fr}}
+.err-msg{color:#ff6b9d;display:none}
+.err-msg.show{display:block}
+.ok-msg{color:#6dffb9;display:none}
+.ok-msg.show{display:block}
+
+.photo-dropzone{border:2px dashed var(--border);border-radius:16px;padding:20px;text-align:center;cursor:pointer;position:relative}
+.photo-dropzone input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.photo-preview{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.photo-thumb{position:relative;width:80px;height:80px;border-radius:12px;overflow:hidden;border:1px solid var(--border);background:var(--surface2)}
+.photo-thumb img{width:100%;height:100%;object-fit:cover}
+.photo-thumb button{position:absolute;top:4px;right:4px;background:#000c;border:none;color:#fff;width:20px;height:20px;border-radius:50%;cursor:pointer}
+
+.profile-wall{width:100%;height:180px;object-fit:cover;background:linear-gradient(135deg,#7b2fff33,#c77dff22)}
+.profile-wall-placeholder{width:100%;height:180px;background:linear-gradient(135deg,#7b2fff22,#c77dff11);display:flex;align-items:center;justify-content:center;color:var(--muted)}
+.profile-head{padding:0 20px 20px;position:relative}
+.profile-avatar-wrap{position:relative;display:inline-block;margin-top:-50px;margin-bottom:12px}
+.profile-avatar{width:90px;height:90px;border-radius:50%;object-fit:cover;border:4px solid var(--bg);background:var(--surface2)}
+.profile-name{font-size:22px;font-weight:700}
+.profile-bio{color:var(--muted);margin:8px 0 12px}
+.profile-stats{display:flex;gap:20px;margin-bottom:16px}
+.stat{text-align:center}
+.stat strong{display:block;font-size:18px}
+.profile-actions{display:flex;gap:8px;flex-wrap:wrap}
+.edit-overlay{position:absolute;inset:0;background:#0008;display:flex;align-items:center;justify-content:center;opacity:0;transition:.2s;cursor:pointer;border-radius:50%}
+.profile-avatar-wrap:hover .edit-overlay,.profile-wall-wrap:hover .edit-overlay{opacity:1}
+.profile-wall-wrap{position:relative;cursor:pointer}
+.profile-products-section{margin-top:20px}
+
+.product-detail-gallery{display:flex;gap:12px;overflow-x:auto;padding-bottom:16px;margin-bottom:20px}
+.product-detail-gallery img{width:100%;max-width:300px;height:220px;object-fit:cover;border-radius:20px;border:1px solid var(--border)}
+.product-detail-title{font-size:26px;font-weight:700;margin-bottom:10px}
+.product-detail-meta{display:flex;gap:14px;align-items:center;margin-bottom:20px;flex-wrap:wrap}
+.product-detail-seller{display:flex;align-items:center;gap:12px;background:var(--surface2);padding:8px 16px;border-radius:40px;cursor:pointer}
+.product-detail-seller:hover{background:var(--surface)}
+.product-detail-seller img{width:32px;height:32px;border-radius:50%}
+.product-detail-price{font-size:32px;font-weight:800;color:var(--accent);margin:12px 0}
+.product-detail-description{background:var(--surface2);padding:24px;border-radius:20px;margin:20px 0;line-height:1.7;white-space:pre-wrap}
+.product-detail-tags{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+.tag{background:var(--surface2);padding:6px 14px;border-radius:40px;font-size:13px;border:1px solid var(--border)}
+.product-detail-actions{display:flex;gap:14px;margin-top:24px;flex-wrap:wrap}
+.btn-icon{display:inline-flex;align-items:center;gap:8px}
+.social-contact-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px;padding-top:16px;border-top:1px solid var(--border)}
+
+.spinner{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin:40px auto}
+@keyframes spin{to{transform:rotate(360deg)}}
+.empty{text-align:center;padding:60px 20px;color:var(--muted)}
+</style>
+</head>
+<body>
+<nav id="navbar">
+  <div class="nav-logo" onclick="showPage('home')">Mio Shop</div>
+  <div class="nav-search"><span class="ico">🔍</span><input type="text" id="search-input" placeholder="Cari produk..."></div>
+  <div class="nav-spacer"></div>
+  <div id="nav-guest"><button class="nav-btn" onclick="showModal('login-modal')">Masuk</button><button class="nav-btn primary" onclick="showModal('register-modal')">Daftar</button></div>
+  <div id="nav-user" style="display:none"><button class="nav-btn" onclick="showPage('products')">🛍 Produk</button><button class="nav-btn" onclick="showPage('my-products')">📦 Milikku</button><img id="nav-avatar" src=""><button class="nav-btn" id="nav-username-btn"></button><button class="nav-btn" onclick="logout()">Keluar</button></div>
+</nav>
+<div class="bottom-nav" id="bottom-nav">
+  <button class="bottom-nav-item" data-page="home"><div class="icon">🏠</div><span>Beranda</span></button>
+  <button class="bottom-nav-item" data-page="products"><div class="icon">🛍️</div><span>Produk</span></button>
+  <button class="bottom-nav-item" data-page="my-products" id="nav-myproducts-mobile" style="display:none"><div class="icon">📦</div><span>Milikku</span></button>
+  <button class="bottom-nav-item" data-page="profile" id="nav-profile-mobile" style="display:none"><div class="icon">👤</div><span>Profil</span></button>
+  <button class="bottom-nav-item" id="nav-login-mobile" onclick="showModal('login-modal')"><div class="icon">🔑</div><span>Masuk</span></button>
+</div>
+<div id="app">
+  <div id="home-page" class="page">
+    <div class="hero"><div class="hero-badge">✨ Platform Digital Marketplace ✨</div><h1>Jual & Beli<br><span>Produk Digital</span></h1><p>Platform terpercaya untuk jual beli produk digital, VPS, skin game, panel bot, dan masih banyak lagi.</p><div class="hero-btns"><button class="btn btn-primary" onclick="showPage('products')">🛍 Jelajahi Produk</button><button class="btn btn-ghost" onclick="openCreateProduct()">+ Mulai Jualan</button></div><div class="hero-stats"><div class="hero-stat"><span class="number" id="stat-products">0</span><span class="label">+ Produk</span></div><div class="hero-stat"><span class="number" id="stat-users">0</span><span class="label">+ Penjual</span></div><div class="hero-stat"><span class="number">24/7</span><span class="label">Support</span></div></div></div>
+    <div class="container"><div class="section-title">✨ Produk Terbaru</div><div id="home-products" class="product-grid"></div></div>
+  </div>
+  <div id="products-page" class="page"><div class="container"><div class="section-title"><span>🛍 Semua Produk</span><button class="btn btn-primary" style="padding:8px 18px;font-size:13px" onclick="openCreateProduct()">+ Tambah</button></div><div class="filter-bar"><select id="cat-filter"><option value="">Semua Kategori</option><option value="ebook">📖 eBook</option><option value="template">🎨 Template</option><option value="course">📚 Kursus</option><option value="software">💻 Software</option><option value="music">🎵 Musik</option><option value="art">🖼️ Seni Digital</option><option value="vps">🖥️ VPS</option><option value="skin">🎭 Skin / Fish</option><option value="panelbot">🤖 Panel Bot</option><option value="other">✨ Lainnya</option></select><button class="btn btn-primary" onclick="loadProducts()">Filter</button></div><div id="all-products" class="product-grid"></div></div></div>
+  <div id="my-products-page" class="page"><div class="container"><div class="section-title"><span>📦 Produk Saya</span><button class="btn btn-primary" style="padding:8px 18px;font-size:13px" onclick="openCreateProduct()">+ Tambah</button></div><div id="my-products-list" class="product-grid"></div></div></div>
+  <div id="profile-page" class="page"><div id="profile-content"></div></div>
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="detail-modal" onclick="closeModalOutside(event,'detail-modal')"><div class="modal"><button class="modal-close" onclick="closeModal('detail-modal')">✕</button><div class="modal-content" id="detail-content"></div></div></div>
+<div class="modal-overlay" id="login-modal" onclick="closeModalOutside(event,'login-modal')"><div class="modal"><button class="modal-close" onclick="closeModal('login-modal')">✕</button><div class="modal-content"><div class="modal-title">Masuk</div><div class="err-msg" id="login-err"></div><div class="form-group"><label>Username/Email</label><input type="text" id="login-user"></div><div class="form-group"><label>Password</label><input type="password" id="login-pass"></div><button class="btn btn-primary" style="width:100%" onclick="login()">Masuk</button><div style="text-align:center;margin-top:16px">Belum punya akun? <a href="#" onclick="closeModal('login-modal');showModal('register-modal')" style="color:var(--accent)">Daftar</a></div></div></div></div>
+<div class="modal-overlay" id="register-modal" onclick="closeModalOutside(event,'register-modal')"><div class="modal"><button class="modal-close" onclick="closeModal('register-modal')">✕</button><div class="modal-content"><div class="modal-title">Daftar</div><div class="err-msg" id="reg-err"></div><div class="ok-msg" id="reg-ok"></div><div class="form-group"><label>Username</label><input type="text" id="reg-user"></div><div class="form-group"><label>Email</label><input type="email" id="reg-email"></div><div class="form-group"><label>Password</label><input type="password" id="reg-pass"></div><button class="btn btn-primary" style="width:100%" onclick="register()">Daftar</button></div></div></div>
+<div class="modal-overlay" id="product-modal" onclick="closeModalOutside(event,'product-modal')"><div class="modal" style="max-width:640px"><button class="modal-close" onclick="closeModal('product-modal')">✕</button><div class="modal-content"><div class="modal-title" id="product-modal-title">Tambah Produk</div><div class="err-msg" id="prod-err"></div><input type="hidden" id="prod-id"><div class="form-group"><label>Judul Produk *</label><input type="text" id="prod-title" placeholder="Nama produk kamu"></div><div class="form-group"><label>Deskripsi *</label><textarea id="prod-desc" rows="4" placeholder="Deskripsikan produkmu secara detail..."></textarea></div><div class="form-row"><div class="form-group"><label>Harga (Rp)</label><input type="number" id="prod-price" placeholder="0 = gratis" min="0"></div><div class="form-group"><label>Kategori</label><select id="prod-cat"><option value="ebook">📖 eBook</option><option value="template">🎨 Template</option><option value="course">📚 Kursus</option><option value="software">💻 Software</option><option value="music">🎵 Musik</option><option value="art">🖼️ Seni Digital</option><option value="vps">🖥️ VPS</option><option value="skin">🎭 Skin / Fish</option><option value="panelbot">🤖 Panel Bot</option><option value="other">✨ Lainnya</option></select></div></div><div class="form-group"><label>Link Download (opsional)</label><input type="text" id="prod-link" placeholder="https://..."></div><div class="form-group"><label>Tags (pisahkan koma)</label><input type="text" id="prod-tags" placeholder="contoh: desain, ui, template"></div><div class="form-group"><label>Foto Produk (max 5)</label><div class="photo-dropzone"><input type="file" id="prod-photos" accept="image/*" multiple onchange="previewPhotos(this)"><span style="font-size:24px">📸</span><div style="margin-top:6px;font-size:13px;color:var(--muted)">Klik atau tarik foto ke sini</div></div><div class="photo-preview" id="photo-preview"></div></div><div class="form-group"><label>Kontak Penjual (opsional)</label><input type="text" id="contact-wa" placeholder="Nomor WhatsApp (contoh: 628123456789)"></div><div class="form-row"><div class="form-group"><input type="text" id="contact-tiktok" placeholder="Username TikTok"></div><div class="form-group"><input type="text" id="contact-ig" placeholder="Username Instagram"></div></div><div class="form-group" style="display:flex;align-items:center;gap:10px"><input type="checkbox" id="prod-published" style="width:auto"><label for="prod-published" style="margin:0;cursor:pointer">Publikasikan sekarang</label></div><button class="btn btn-primary" style="width:100%" onclick="saveProduct()">Simpan Produk</button></div></div></div>
+<div class="modal-overlay" id="edit-profile-modal" onclick="closeModalOutside(event,'edit-profile-modal')"><div class="modal"><button class="modal-close" onclick="closeModal('edit-profile-modal')">✕</button><div class="modal-content"><div class="modal-title">Edit Profil</div><div class="err-msg" id="prof-err"></div><div class="ok-msg" id="prof-ok"></div><div class="form-group"><label>Bio</label><textarea id="prof-bio" rows="3" maxlength="200" placeholder="Ceritakan tentang dirimu..."></textarea></div><div class="form-group"><label>Foto Profil</label><div class="photo-dropzone" style="padding:12px"><input type="file" id="avatar-file" accept="image/*" onchange="uploadAvatar(this)"><span style="font-size:13px">Pilih foto</span></div></div><div class="form-group"><label>Foto Wallpaper</label><div class="photo-dropzone" style="padding:12px"><input type="file" id="wallpaper-file" accept="image/*" onchange="uploadWallpaper(this)"><span style="font-size:13px">Pilih foto</span></div></div><button class="btn btn-primary" style="width:100%" onclick="saveProfile()">Simpan</button></div></div></div>
+
+<script>
+// ========== STATE ==========
+let currentUser = null;
+let editingPhotoUrls = [];
+let removePhotoUrls = [];
+
+// ========== DOM READY ==========
+document.addEventListener('DOMContentLoaded', async () => {
+  await tryAutoLogin();
+  showPage('home');
+  loadHomeProducts();
+  loadStats();
+  initBottomNav();
+  document.getElementById('search-input')?.addEventListener('input', (e) => debounceSearch(e.target.value));
+});
+
+async function loadStats() {
+  try {
+    const products = await api('/api/products?');
+    const users = await api('/api/users?limit=100');
+    document.getElementById('stat-products').textContent = products.length || 0;
+    document.getElementById('stat-users').textContent = users?.length || 0;
+  } catch(e) {}
+}
+
+async function tryAutoLogin() {
+  try { const res = await api('/api/auth/me'); currentUser = res; updateNavUI(); updateBottomNavUI(); } catch(e) {}
+}
+
+// ========== API ==========
+async function api(url, opts={}) {
+  const res = await fetch(url, { credentials: 'include', ...opts });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || `Error ${res.status}`);
+  return data;
+}
+async function apiForm(url, fd, method='POST') {
+  const res = await fetch(url, { method, body: fd, credentials: 'include' });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error);
+  return data;
+}
+
+// ========== AUTH ==========
+async function register() {
+  const u = document.getElementById('reg-user').value.trim();
+  const e = document.getElementById('reg-email').value.trim();
+  const p = document.getElementById('reg-pass').value;
+  try {
+    await api('/api/auth/register', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ username:u, email:e, password:p }) });
+    showMsg('reg-ok', 'Berhasil daftar! Silakan masuk.'); hideMsg('reg-err');
+  } catch(err) { showMsg('reg-err', err.message); }
+}
+async function login() {
+  const u = document.getElementById('login-user').value.trim();
+  const p = document.getElementById('login-pass').value;
+  try {
+    const data = await api('/api/auth/login', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ username:u, password:p }) });
+    currentUser = data.user;
+    updateNavUI(); updateBottomNavUI(); closeModal('login-modal'); showPage('home'); loadHomeProducts(); loadStats();
+  } catch(err) { showMsg('login-err', err.message); }
+}
+async function logout() {
+  await api('/api/auth/logout', { method:'POST' });
+  currentUser = null; updateNavUI(); updateBottomNavUI(); showPage('home'); loadHomeProducts(); loadStats();
+}
+
+// ========== UI HELPERS ==========
+function updateNavUI() {
+  const guest = document.getElementById('nav-guest');
+  const userDiv = document.getElementById('nav-user');
+  if(currentUser) {
+    guest.style.display = 'none';
+    userDiv.style.display = 'flex';
+    document.getElementById('nav-username-btn').textContent = '@'+currentUser.username;
+    const av = document.getElementById('nav-avatar');
+    if(currentUser.avatar) { av.src = currentUser.avatar; av.style.display = 'block'; } else av.style.display = 'none';
+  } else {
+    guest.style.display = 'flex';
+    userDiv.style.display = 'none';
+  }
+}
+function updateBottomNavUI() {
+  const my = document.getElementById('nav-myproducts-mobile');
+  const prof = document.getElementById('nav-profile-mobile');
+  const login = document.getElementById('nav-login-mobile');
+  if(currentUser) {
+    if(my) my.style.display = 'flex';
+    if(prof) prof.style.display = 'flex';
+    if(login) login.style.display = 'none';
+  } else {
+    if(my) my.style.display = 'none';
+    if(prof) prof.style.display = 'none';
+    if(login) login.style.display = 'flex';
+  }
+}
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const page = document.getElementById(name+'-page');
+  if(page) page.classList.add('active');
+  if(name === 'products') loadProducts();
+  if(name === 'my-products') { if(!currentUser) { showModal('login-modal'); return; } loadMyProducts(); }
+  if(name === 'profile') { if(currentUser) viewProfile(currentUser.username); else showModal('login-modal'); }
+  document.querySelectorAll('.bottom-nav-item[data-page]').forEach(btn => {
+    if(btn.getAttribute('data-page') === name) btn.classList.add('active');
+    else btn.classList.remove('active');
+  });
+}
+function initBottomNav() {
+  document.querySelectorAll('.bottom-nav-item[data-page]').forEach(btn => {
+    btn.addEventListener('click', () => showPage(btn.getAttribute('data-page')));
+  });
+}
+
+// ========== PROFILE (FIXED - BISA LIHAT PROFIL ORANG LAIN) ==========
+async function viewProfile(username) {
+  // Pindah ke halaman profile dulu
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('profile-page').classList.add('active');
+  
+  const container = document.getElementById('profile-content');
+  container.innerHTML = '<div class="spinner"></div>';
+  
+  try {
+    const user = await api('/api/users/'+username);
+    const products = await api('/api/products?userId='+user.id);
+    const isMe = currentUser?.id === user.id;
+    let following = false;
+    
+    if(currentUser && !isMe) { 
+      try {
+        const status = await api('/api/follow/status/'+user.id); 
+        following = status.following;
+      } catch(e) {}
+    }
+    
+    const wallHtml = user.wallpaper ? `<img src="${user.wallpaper}" class="profile-wall">` : `<div class="profile-wall-placeholder">🌌 Wallpaper belum diatur</div>`;
+    const avatarHtml = user.avatar ? `<img src="${user.avatar}" class="profile-avatar">` : `<div class="profile-avatar" style="display:flex;align-items:center;justify-content:center;font-size:40px">👤</div>`;
+    const stats = `<div class="profile-stats"><div class="stat"><strong>${user.followerCount}</strong><span>Pengikut</span></div><div class="stat"><strong>${user.followingCount}</strong><span>Mengikuti</span></div><div class="stat"><strong>${products.length}</strong><span>Produk</span></div></div>`;
+    let actions = '';
+    if(isMe) actions = `<button class="btn btn-ghost" onclick="openEditProfile()">✏️ Edit Profil</button>`;
+    else if(currentUser) actions = `<button class="btn ${following ? 'btn-ghost' : 'btn-primary'}" id="follow-action" onclick="toggleFollow('${user.id}')">${following ? '✓ Mengikuti' : '+ Ikuti'}</button>`;
+    
+    let productGridHtml = '';
+    if(products.length > 0) {
+      let productCards = '';
+      for(let p of products) {
+        const img = p.photos?.length ? `<img class="product-card-img" src="${p.photos[0]}">` : `<div class="product-card-img placeholder">📦</div>`;
+        const price = p.price>0 ? 'Rp '+p.price.toLocaleString('id') : '<span style="color:#6dffb9">Gratis</span>';
+        productCards += `<div class="product-card" onclick="openDetail('${p.id}')">
+          ${img}
+          <div class="product-card-body">
+            <div class="product-card-title">${esc(p.title)}</div>
+            <div class="product-card-meta"><span class="badge cat">${p.category}</span></div>
+            <div class="product-card-price">${price}</div>
+          </div>
+        </div>`;
+      }
+      productGridHtml = `<div class="profile-products-section"><div class="section-title">📦 Produk dari @${esc(user.username)}</div><div class="product-grid">${productCards}</div></div>`;
+    } else {
+      productGridHtml = '<div class="empty">📦 Belum ada produk</div>';
+    }
+    
+    container.innerHTML = `
+      <div class="profile-wall-wrap" ${isMe ? 'onclick="document.getElementById(\'wallpaper-file\').click()"' : ''}>
+        ${wallHtml}
+        ${isMe ? '<div class="edit-overlay">✏️ Ganti Wallpaper</div>' : ''}
+      </div>
+      <div class="profile-head">
+        <div class="profile-avatar-wrap" ${isMe ? 'onclick="document.getElementById(\'avatar-file\').click()"' : ''}>
+          ${avatarHtml}
+          ${isMe ? '<div class="edit-overlay">✏️</div>' : ''}
+        </div>
+        <div class="profile-name">@${esc(user.username)}</div>
+        <div class="profile-bio">${esc(user.bio || 'Belum ada bio')}</div>
+        ${stats}
+        <div class="profile-actions">${actions}</div>
+      </div>
+      <div class="container">${productGridHtml}</div>
+    `;
+  } catch(err) { 
+    console.error('Profile error:', err);
+    container.innerHTML = `<div class="empty">⚠️ Gagal memuat profil: ${err.message}<br><button class="btn btn-ghost" onclick="viewProfile('${esc(username)}')">Coba lagi</button></div>`; 
+  }
+}
+
+// Alias untuk kompatibilitas
+async function showProfile(username) {
+  await viewProfile(username);
+}
+
+async function toggleFollow(userId) { 
+  const res = await api('/api/follow/'+userId, { method:'POST' }); 
+  const btn=document.getElementById('follow-action'); 
+  if(btn){ 
+    btn.textContent = res.following ? '✓ Mengikuti' : '+ Ikuti'; 
+    btn.className = `btn ${res.following ? 'btn-ghost' : 'btn-primary'}`; 
+  } 
+  // Refresh profil setelah follow/unfollow
+  if(currentUser) {
+    const user = await api('/api/users/'+currentUser.username);
+    currentUser = user;
+    updateNavUI();
+  }
+}
+
+async function openEditProfile() { document.getElementById('prof-bio').value = currentUser.bio || ''; hideMsg('prof-err'); hideMsg('prof-ok'); showModal('edit-profile-modal'); }
+async function saveProfile() { try { const bio = document.getElementById('prof-bio').value; const res = await api('/api/profile', { method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ bio }) }); currentUser = { ...currentUser, ...res }; showMsg('prof-ok','Profil tersimpan!'); setTimeout(()=>{ closeModal('edit-profile-modal'); viewProfile(currentUser.username); updateNavUI(); updateBottomNavUI(); },1000); } catch(err){ showMsg('prof-err',err.message); } }
+async function uploadAvatar(input) { const fd=new FormData(); fd.append('avatar',input.files[0]); const res=await apiForm('/api/profile/avatar',fd); currentUser.avatar=res.avatar; updateNavUI(); updateBottomNavUI(); await viewProfile(currentUser.username); closeModal('edit-profile-modal'); }
+async function uploadWallpaper(input) { const fd=new FormData(); fd.append('wallpaper',input.files[0]); const res=await apiForm('/api/profile/wallpaper',fd); currentUser.wallpaper=res.wallpaper; await viewProfile(currentUser.username); closeModal('edit-profile-modal'); }
+
+// ========== PRODUCTS ==========
+let searchTimer;
+function debounceSearch(q) { clearTimeout(searchTimer); searchTimer = setTimeout(() => loadProducts(q), 300); }
+async function loadHomeProducts() { const products = await api('/api/products?'); renderProductGrid('home-products', products.slice(0,8)); }
+async function loadProducts(q='') { 
+  const cat = document.getElementById('cat-filter')?.value||'';
+  const sq = document.getElementById('search-input')?.value||q;
+  const params = new URLSearchParams();
+  if(cat) params.set('category',cat);
+  if(sq) params.set('q',sq);
+  const products = await api('/api/products?'+params);
+  renderProductGrid('all-products', products);
+}
+async function loadMyProducts() { const products = await api('/api/products/mine'); renderProductGrid('my-products-list', products, true); }
+
+function renderProductGrid(elId, products, showOwner=false) {
+  const el = document.getElementById(elId);
+  if(!el) return;
+  if(!products.length) { el.innerHTML='<div class="empty">📦 Belum ada produk</div>'; return; }
+  
+  el.innerHTML = products.map(p => {
+    const img = p.photos?.length ? `<img class="product-card-img" src="${p.photos[0]}">` : `<div class="product-card-img placeholder">📦</div>`;
+    const price = p.price>0 ? 'Rp '+p.price.toLocaleString('id') : '<span style="color:#6dffb9">Gratis</span>';
+    const draft = !p.published ? '<span style="position:absolute;top:8px;right:8px;background:#ff6b9d22;color:#ff6b9d;padding:2px 8px;border-radius:50px;font-size:10px">Draft</span>' : '';
+    const ownerHtml = showOwner ? `<div style="margin-top:8px"><button class="btn btn-ghost" style="padding:4px 10px;font-size:11px" onclick="event.stopPropagation();openEditProduct('${p.id}')">✏️ Edit</button> <button class="btn" style="padding:4px 10px;font-size:11px;background:#ff6b9d22;color:#ff6b9d;border:none" onclick="event.stopPropagation();deleteProduct('${p.id}')">🗑</button></div>` : '';
+    const sellerInfo = !showOwner ? `<div class="seller-info" onclick="event.stopPropagation();viewProfile('${esc(p.username)}')">
+      <div class="seller-avatar" style="background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:14px">👤</div>
+      <span class="seller-name">oleh <strong>${esc(p.username)}</strong></span>
+    </div>` : '';
+    
+    return `<div class="product-card" onclick="openDetail('${p.id}')">
+      ${draft}
+      ${img}
+      <div class="product-card-body">
+        <div class="product-card-title">${esc(p.title)}</div>
+        <div class="product-card-meta"><span class="badge cat">${p.category}</span></div>
+        <div class="product-card-price">${price}</div>
+        ${sellerInfo}
+        ${ownerHtml}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ========== DETAIL PRODUK ==========
+async function openDetail(id) {
+  const p = await api('/api/products/'+id);
+  const isOwner = currentUser?.id === p.userId;
+  const priceDisplay = p.price > 0 ? 'Rp ' + p.price.toLocaleString('id') : 'Gratis';
+  const categoryIcon = { ebook:'📖', template:'🎨', course:'📚', software:'💻', music:'🎵', art:'🖼️', vps:'🖥️', skin:'🎭', panelbot:'🤖', other:'✨' };
+  const catIcon = categoryIcon[p.category] || '🏷️';
+  const galleryHtml = p.photos?.length ? `<div class="product-detail-gallery">${p.photos.map(ph => `<img src="${ph}" alt="product image" loading="lazy">`).join('')}</div>` : '<div style="padding:20px;text-align:center">Tidak ada foto</div>';
+  const tagsHtml = p.tags?.length ? `<div class="product-detail-tags">${p.tags.map(t => `<span class="tag">#${esc(t)}</span>`).join('')}</div>` : '';
+  
+  let actionButtons = '';
+  if (isOwner) {
+    actionButtons += `<button class="btn btn-ghost btn-icon" onclick="closeModal('detail-modal'); openEditProduct('${p.id}')">✏️ Edit Produk</button>`;
+  }
+  if (p.downloadUrl && (isOwner || p.published)) {
+    actionButtons += `<a href="${p.downloadUrl}" target="_blank" rel="noopener" class="btn btn-primary btn-icon">⬇️ Download / Akses</a>`;
+  }
+  
+  let contactHtml = '';
+  const wa = p.contactWa || p.contact_wa || '';
+  const tiktok = p.contactTiktok || p.contact_tiktok || '';
+  const ig = p.contactIg || p.contact_ig || '';
+  if (wa || tiktok || ig) {
+    let buttons = '';
+    if (wa) buttons += `<a href="https://wa.me/${wa.replace(/[^0-9]/g, '')}" target="_blank" class="btn btn-ghost btn-icon"><span>💬</span> WhatsApp</a>`;
+    if (tiktok) buttons += `<a href="https://tiktok.com/@${tiktok.replace('@', '')}" target="_blank" class="btn btn-ghost btn-icon"><span>🎵</span> TikTok</a>`;
+    if (ig) buttons += `<a href="https://instagram.com/${ig.replace('@', '')}" target="_blank" class="btn btn-ghost btn-icon"><span>📷</span> Instagram</a>`;
+    contactHtml = `<div class="social-contact-row">${buttons}</div>`;
+  }
+  
+  const detailHTML = `
+    <div>
+      ${galleryHtml}
+      <div class="product-detail-title">${esc(p.title)}</div>
+      <div class="product-detail-meta">
+        <span class="badge cat">${catIcon} ${p.category}</span>
+        <div class="product-detail-seller" onclick="closeModal('detail-modal');viewProfile('${esc(p.username)}')">
+          <div style="width:32px;height:32px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:16px">👤</div>
+          <span><strong>${esc(p.username)}</strong></span>
+        </div>
+      </div>
+      <div class="product-detail-price">${priceDisplay}</div>
+      <div class="product-detail-description">${esc(p.description).replace(/\n/g, '<br>')}</div>
+      ${tagsHtml}
+      <div class="product-detail-actions">${actionButtons}</div>
+      ${contactHtml}
+    </div>
+  `;
+  document.getElementById('detail-content').innerHTML = detailHTML;
+  showModal('detail-modal');
+}
+
+// ========== CRUD PRODUK ==========
+function openCreateProduct() { 
+  if(!currentUser){showModal('login-modal');return;} 
+  document.getElementById('product-modal-title').textContent='Tambah Produk'; 
+  document.getElementById('prod-id').value=''; 
+  document.getElementById('prod-title').value=''; 
+  document.getElementById('prod-desc').value=''; 
+  document.getElementById('prod-price').value=''; 
+  document.getElementById('prod-cat').value='other'; 
+  document.getElementById('prod-link').value=''; 
+  document.getElementById('prod-tags').value=''; 
+  document.getElementById('prod-published').checked=true; 
+  document.getElementById('photo-preview').innerHTML=''; 
+  document.getElementById('contact-wa').value='';
+  document.getElementById('contact-tiktok').value='';
+  document.getElementById('contact-ig').value='';
+  editingPhotoUrls=[]; removePhotoUrls=[]; 
+  showModal('product-modal'); 
+}
+async function openEditProduct(id) { 
+  const p=await api('/api/products/'+id); 
+  document.getElementById('product-modal-title').textContent='Edit Produk'; 
+  document.getElementById('prod-id').value=p.id; 
+  document.getElementById('prod-title').value=p.title; 
+  document.getElementById('prod-desc').value=p.description; 
+  document.getElementById('prod-price').value=p.price||''; 
+  document.getElementById('prod-cat').value=p.category; 
+  document.getElementById('prod-link').value=p.downloadUrl||''; 
+  document.getElementById('prod-tags').value=(p.tags||[]).join(', '); 
+  document.getElementById('prod-published').checked=p.published; 
+  document.getElementById('contact-wa').value=p.contactWa || p.contact_wa || '';
+  document.getElementById('contact-tiktok').value=p.contactTiktok || p.contact_tiktok || '';
+  document.getElementById('contact-ig').value=p.contactIg || p.contact_ig || '';
+  editingPhotoUrls=[...(p.photos||[])]; removePhotoUrls=[]; 
+  renderExistingPhotos(); 
+  showModal('product-modal'); 
+}
+function renderExistingPhotos() { const preview=document.getElementById('photo-preview'); preview.innerHTML=editingPhotoUrls.map((ph,i)=>`<div class="photo-thumb"><img src="${ph}"><button onclick="removeExistingPhoto(${i})">✕</button></div>`).join(''); }
+function removeExistingPhoto(idx){ removePhotoUrls.push(editingPhotoUrls[idx]); editingPhotoUrls.splice(idx,1); renderExistingPhotos(); }
+function previewPhotos(input){ const files=Array.from(input.files); const total=editingPhotoUrls.length+files.length; if(total>5){ alert('Maksimal 5 foto'); input.value=''; return; } const preview=document.getElementById('photo-preview'); renderExistingPhotos(); files.forEach(f=>{ const reader=new FileReader(); reader.onload=e=>{ const div=document.createElement('div'); div.className='photo-thumb'; div.innerHTML=`<img src="${e.target.result}">`; preview.appendChild(div); }; reader.readAsDataURL(f); }); }
+async function saveProduct(){ 
+  const id=document.getElementById('prod-id').value; 
+  const fd=new FormData(); 
+  fd.append('title',document.getElementById('prod-title').value); 
+  fd.append('description',document.getElementById('prod-desc').value); 
+  fd.append('price',document.getElementById('prod-price').value||'0'); 
+  fd.append('category',document.getElementById('prod-cat').value); 
+  fd.append('downloadUrl',document.getElementById('prod-link').value); 
+  fd.append('tags',document.getElementById('prod-tags').value); 
+  fd.append('published',document.getElementById('prod-published').checked?'true':'false'); 
+  fd.append('contactWa',document.getElementById('contact-wa').value);
+  fd.append('contactTiktok',document.getElementById('contact-tiktok').value);
+  fd.append('contactIg',document.getElementById('contact-ig').value);
+  if(removePhotoUrls.length) fd.append('removePhotos',JSON.stringify(removePhotoUrls)); 
+  const photos=document.getElementById('prod-photos').files; 
+  for(let f of photos) fd.append('photos',f); 
+  try{ 
+    if(id) await apiForm('/api/products/'+id,fd,'PUT'); 
+    else await apiForm('/api/products',fd,'POST'); 
+    closeModal('product-modal'); 
+    loadMyProducts(); loadProducts(); loadHomeProducts(); loadStats();
+  } catch(err){ showMsg('prod-err',err.message); } 
+}
+async function deleteProduct(id){ if(!confirm('Hapus produk ini?')) return; await api('/api/products/'+id,{method:'DELETE'}); loadMyProducts(); loadProducts(); loadHomeProducts(); loadStats(); }
+
+// ========== UTILS ==========
+function showModal(id) { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+function closeModalOutside(e,id) { if(e.target.id === id) closeModal(id); }
+function showMsg(id,msg) { const el=document.getElementById(id); if(el){ el.textContent=msg; el.classList.add('show'); } }
+function hideMsg(id) { const el=document.getElementById(id); if(el) el.classList.remove('show'); }
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+</script>
+</body>
+</html>
